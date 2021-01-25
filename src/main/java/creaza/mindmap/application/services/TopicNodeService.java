@@ -17,7 +17,8 @@ public class TopicNodeService {
     }
 
     public TopicNode update(TopicNode topicNodeRequest, Long id) {
-        TopicNode updatedTopicNode = topicNodeRepository.findById(id)
+        //TODO: Validate here?
+        return topicNodeRepository.findById(id)
                 .map(topicNode -> {
                     topicNode.setTopic(topicNodeRequest.getTopic());
                     for(TopicNode subNode : topicNodeRequest.getSubNodes()) {
@@ -27,8 +28,6 @@ public class TopicNodeService {
                     return topicNode;
                 })
                 .orElse(null);
-
-        return updatedTopicNode;
     }
 
     public void deleteById(@PathVariable Long id) {

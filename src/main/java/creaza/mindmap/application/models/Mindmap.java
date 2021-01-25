@@ -17,7 +17,7 @@ public class Mindmap {
     @NotNull
     private String title;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private TopicNode mainNode;
 
 

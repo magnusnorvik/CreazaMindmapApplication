@@ -28,7 +28,8 @@ public class MindmapService {
     }
 
     public Mindmap update(Mindmap mindmapRequestData, Long id) {
-        Mindmap updatedMindmap = mindmapRepository.findById(id)
+        //TODO: Validate here?
+        return mindmapRepository.findById(id)
                 .map(mindmap -> {
                     mindmap.setTitle(mindmapRequestData.getTitle());
                     mindmap.setMainNode(mindmapRequestData.getMainNode());
@@ -36,7 +37,6 @@ public class MindmapService {
                     return mindmap;
                 })
                 .orElse(null);
-        return updatedMindmap;
     }
 
     public void deleteById(Long id) {

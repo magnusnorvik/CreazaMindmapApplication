@@ -1,6 +1,7 @@
 package creaza.mindmap.application.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,7 +25,7 @@ public class TopicNode {
             cascade = CascadeType.ALL,
             mappedBy = "parentNode"
     )
-    private List<TopicNode> subNodes;
+    private List<TopicNode> subNodes = new ArrayList<>();
 
     // ---------------------------------- CONSTRUCTORS----------------------------------------------//
     public TopicNode() {
