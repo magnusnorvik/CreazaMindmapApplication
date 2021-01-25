@@ -2,21 +2,82 @@ package creaza.mindmap.application.models;
 
 import com.sun.istack.NotNull;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Mindmap {
+
+    //region FIELDS...
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    private Long id;
 
     @NotNull
-    String title;
+    private String title;
 
-    TopicNode mainNode;
+    @OneToOne
+    private TopicNode mainNode;
 
+
+    //endregion
+
+    //region CONSTRUCTORS
+
+    public Mindmap() {
+    }
+
+    public Mindmap(String title, String mainTopic, String subTopic) {
+        this.title = title;
+        this.mainNode = new TopicNode(mainTopic, subTopic, 4);
+    }
+
+    //endregion
+
+    //region GETTERS
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public TopicNode getMainNode() {
+        return mainNode;
+    }
+
+
+    //endregion
+
+
+    //region SETTERS
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setMainNode(TopicNode mainNode) {
+        this.mainNode = mainNode;
+    }
+
+    //endregion
+
+    //region OVERRIDES
+
+    @Override
+    public boolean equals(Object obj) {
+        //TODO: Implement Method
+        return super.equals(obj);
+    }
+
+    @Override
+    public String toString() {
+        return String.format( "Id: %s\nName: %s\nMainNode: %s\n", id,title, mainNode);
+    }
+
+    //endregion
 
 }
