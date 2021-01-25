@@ -16,7 +16,7 @@ public class TopicNode {
     Mindmap mindmap;
 
     @ManyToOne
-    @JoinColumn(name = "fk_parent_node_id")
+    @JoinColumn(name = "fk_parent_node_id") // This error will likely go away with a real database.
     private TopicNode parentNode;
 
     @OneToMany (
