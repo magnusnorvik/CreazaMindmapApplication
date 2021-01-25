@@ -18,6 +18,7 @@ public class TopicNodeService {
 
     public TopicNode update(TopicNode topicNodeRequest, Long id) {
         //TODO: Validate here?
+        //TODO: This doesnt store nested subsub nodes.
         return topicNodeRepository.findById(id)
                 .map(topicNode -> {
                     topicNode.setTopic(topicNodeRequest.getTopic());
