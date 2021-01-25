@@ -28,9 +28,9 @@ public class Mindmap {
     public Mindmap() {
     }
 
-    public Mindmap(String title, String mainTopic, String subTopic) {
+    public Mindmap(String title, String mainTopic, String subTopic, int numberOfSubNodes) {
         this.title = title;
-        this.mainNode = new TopicNode(mainTopic, subTopic, 4);
+        this.mainNode = new TopicNode(mainTopic, subTopic, numberOfSubNodes);
     }
 
     //endregion
