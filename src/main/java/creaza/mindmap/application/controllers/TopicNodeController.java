@@ -21,11 +21,12 @@ public class TopicNodeController {
         return ResponseEntity.ok(topicNodeService.getById(id));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping
     @CrossOrigin("http://localhost:3000")
-    public ResponseEntity<TopicNode> save(@RequestBody TopicNode topicNodeRequest, @PathVariable Long id) {
+    public ResponseEntity<TopicNode> save(@RequestBody TopicNode topicNodeRequest) {
         // TODO: Validate request body
-        return ResponseEntity.ok(topicNodeService.update(topicNodeRequest, id));
+        System.out.println(topicNodeRequest);
+        return ResponseEntity.ok(topicNodeService.update(topicNodeRequest, topicNodeRequest.getId()));
     }
 
     @DeleteMapping("/{id}")

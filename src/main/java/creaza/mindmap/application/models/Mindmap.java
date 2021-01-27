@@ -75,7 +75,7 @@ public class Mindmap {
 
     @Override
     public String toString() {
-        return String.format( "Id: %s\nName: %s\nMainNode: %s\n", id,title, mainNode);
+        return String.format( "Id: %s\nTitle: %s\nMainNode: %s\n", id,title, mainNode);
     }
 
     //endregion

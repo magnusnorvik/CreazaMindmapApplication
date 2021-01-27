@@ -68,6 +68,10 @@ public class TopicNode {
 
     // ------------------------------------ SETTERS ------------------------------------------------//
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setTopic(String topic) {
         this.topic = topic;
     }
@@ -87,12 +91,11 @@ public class TopicNode {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(String.format( "Id: %s\nName: %s\n", id, topic));
+        stringBuilder.append(String.format( "Id: %s\nTopic: %s\n", id, topic));
         stringBuilder.append(("Subnodes:\n"));
         for(TopicNode subNode : subNodes) {
             stringBuilder.append(String.format("%s", subNode));
         }
         return stringBuilder.toString();
     }
-
 }

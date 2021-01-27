@@ -18,7 +18,10 @@ public class TopicNodeService {
 
     public TopicNode update(TopicNode topicNodeRequest, Long id) {
         //TODO: Validate here?
+
         //TODO: This doesnt store nested subsub nodes.
+        //TODO: Doesnt delete nodes when updating. Needed?
+
         return topicNodeRepository.findById(id)
                 .map(topicNode -> {
                     topicNode.setTopic(topicNodeRequest.getTopic());
@@ -29,6 +32,11 @@ public class TopicNodeService {
                     return topicNode;
                 })
                 .orElse(null);
+        /*
+        topicNodeRequest.setId(id);
+        topicNodeRepository.save(topicNodeRequest);
+        return topicNodeRequest;
+        */
     }
 
     public void deleteById(@PathVariable Long id) {
