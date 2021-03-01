@@ -1,0 +1,48 @@
+@startuml
+@startuml
+
+package "Controllers (API)" <<Folder>> {
+    class MindmapController {
+
+    }
+    class TopicNodeController
+}
+
+package "Services (UseCases)"<<Folder>> {
+    class MindmapService {
+    }
+
+    class TopicNodeService
+}
+
+package Repositories <<Folder>> {
+    interface MindmapRepository
+    interface TopicNodeRepository
+}
+
+package Models <<Folder>> {
+    class Mindmap {
+        title: String
+        mainNode: TopicNode
+    }
+    class TopicNode
+    class UndoStack
+}
+
+
+
+MindmapController --> MindmapService
+TopicNodeController --> TopicNodeService
+
+TopicNodeService --> TopicNode
+MindmapService --> Mindmap
+
+Mindmap --> TopicNode
+
+TopicNodeService ---> TopicNodeRepository
+MindmapService ---> MindmapRepository
+
+TopicNode <-- TopicNodeRepository
+MindmapRepository --> Mindmap
+@enduml
+@enduml

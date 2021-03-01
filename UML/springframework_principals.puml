@@ -1,0 +1,59 @@
+@startuml
+@startuml
+
+package API <<Folder>> {
+    class "   Controller   " {
+    }
+}
+
+package CORE {
+    package "UseCase" <<Folder>> {
+        class "   Service   " {
+        }
+        interface "   Repository   "
+
+    }
+
+    package Model <<Folder>> {
+        class "   BO   " {
+        }
+    }
+
+    class "   DTO/Entity   " {
+
+    }
+
+    /'class "   DTO   " {
+
+        }'/
+}
+
+
+package DataAccess <<Folder>> {
+    class "   RepositoryImplementation   " {
+    }
+
+    /'class "   Entity   " {
+    }'/
+}
+
+
+"   Controller   " --> "   Service   "
+/'"   Controller   " --> "   DTO   "'/
+"   Controller   " --> "   DTO/Entity   "
+
+"   Service   " -left-> "   BO   "
+"   Service   " --> "   Repository   "
+
+"   Service   " --> "   DTO/Entity   "
+'"   Service   " --> "   DTO   "
+
+"   Repository   "  <|--- "   RepositoryImplementation   "
+
+"   RepositoryImplementation   " --> "   DTO/Entity   "
+/'"   RepositoryImplementation   " -Right-> "   Entity   "
+"   RepositoryImplementation   " --> "   DTO   "'/
+
+@enduml
+
+@enduml
