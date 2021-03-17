@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Mindmap << (C,red) container>> {
+    ~store
+    ==state==
+    ==props==
+}
+
+class MindmapNode << (C,blue) container>> {
+    ~store
+    ==state==
+    ==props==
+}
+
+@enduml
