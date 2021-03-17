@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/deployment-diagram
+
+
+rectangle rectangle [
+    <b>User Interface
+    Menyer
+    knapper
+    toolbars
+]
+
+
+rectangle rectangle [
+"Mindmap Functionality"
+] 
+
+package Backend
+package Database
+
+
+folder folder [
+This is a <b>folder
+----
+You can use separator
+====
+of different kind
+....
+and style
+]
+
+
+@enduml
