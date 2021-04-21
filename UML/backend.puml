@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+
+class MindMap {
+    - mindmapNodes : List<Node>
+    - mindmapEdges : List<Edge>
+}
+
+class Node {
+    parentId : Long
+    incomingEdge : Int
+    outgoingEdges :  Int[]
+}
+
+class Edge {
+    x1: int
+    y1: int
+    x2: int
+    y2 : int
+}
+
+MindMap o-- Node
+/'
+
+Node o-right- Edge
+Node o-- Node
+'/
+
+
+MindMap o-- Edge
+
+@enduml
+
+

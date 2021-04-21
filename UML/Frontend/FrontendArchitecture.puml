@@ -1,0 +1,36 @@
+@startuml
+
+skinparam class {
+    BackgroundColor white
+    ArrowColor DeepSkyBlue
+    BorderColor #333333
+}
+
+skinparam roundcorner 15
+
+class MindmapContainer << (C,#aa3333) container>> {
+    ~store
+    ==state==
+    # nodeData
+    # edgeData
+    ==props==
+}
+
+class Mindmap <<(C, DeepSkyBlue) component>> {
+    ==props==
+}
+
+class MindmapNode <<(C, DeepSkyBlue) component>> {
+    ==props==
+}
+
+class MindmapEdge <<(C, DeepSkyBlue) component>> {
+    ==props==
+}
+
+MindmapContainer o-- Mindmap
+
+Mindmap o-- MindmapNode
+Mindmap o-- MindmapEdge
+
+@enduml

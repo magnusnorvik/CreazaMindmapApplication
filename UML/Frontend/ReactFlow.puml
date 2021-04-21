@@ -1,0 +1,61 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+
+/'autonumber'/
+skinparam actorStyle awesome
+skinparam roundcorner 15
+
+skinparam sequence {
+ArrowColor DeepSkyBlue
+ActorBorderColor #333
+LifeLineBorderColor blue
+LifeLineBackgroundColor #A9DCDF
+
+ParticipantBorderColor #333
+ParticipantBackgroundColor white
+ParticipantFontName Aapex
+ParticipantFontSize 17
+ParticipantFontColor #333
+
+ActorBackgroundColor white
+ActorFontColor #333
+ActorFontSize 17
+ActorFontName Aapex
+
+GroupBorderColor #888
+GroupFontName Aapex
+GroupFontColor #333
+}
+
+participant Input        as User
+participant "Stateful Component"     as Mindmap
+participant "Stateless sub component" as Node
+
+User -> Mindmap: State updated
+Mindmap -> Node: Props updated
+
+alt Component should update
+
+    Node -> Node: Re-render
+
+else Component should NOT update
+
+    Node -> Node: Do nothing
+
+end
+
+Mindmap <-- Node: Callback
+
+alt Component should update
+
+    Mindmap -> Mindmap: Re-render
+
+else Component should NOT update
+
+    Mindmap -> Mindmap: Do nothing
+
+end
+User <-- Mindmap: Ny node dukker opp
+
+@enduml

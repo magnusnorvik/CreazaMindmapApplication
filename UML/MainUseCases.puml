@@ -1,0 +1,66 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+skinparam actorStyle awesome
+skinparam sequence {
+ArrowColor DeepSkyBlue
+ActorBorderColor #333
+LifeLineBorderColor blue
+LifeLineBackgroundColor #A9DCDF
+
+ParticipantBorderColor #333
+ParticipantBackgroundColor white
+ParticipantFontName Aapex
+ParticipantFontSize 17
+ParticipantFontColor #333
+
+ActorBackgroundColor white
+ActorFontColor #333
+ActorFontSize 17
+ActorFontName Aapex
+
+GroupBorderColor deepskyblue
+GroupFontName Aapex
+GroupFontColor #333
+}
+
+rectangle "React" {
+  usecase "Lage nytt\ntankekart" as New
+  usecase "Legge til\nnode" as Add
+  usecase "Slette\nnode" as Del
+  usecase "Redigere tekst" as Edit
+  usecase "Legge til bilde" as Pic
+}
+
+rectangle "D3" {
+  usecase "Panorere" as Pan
+  usecase "Zoome inn\nog ut" as Zoom
+  usecase "Flytte på\nnoder" as Drag
+}
+
+
+
+User --> (New)
+User --> (Pan)
+User --> (Zoom)
+User --> (Drag)
+User --> (Add)
+User --> (Del)
+(Add) --> (Edit)
+(Add) ..> (Pic)
+
+
+/'note righ of Admin : This is an example.
+
+:Main Admin: as Admin
+(Use the application) as (Use)
+
+note right of (Use)
+A note can also
+be on several lines
+end note
+
+note "This note is connected\nto several objects." as N2
+(Start) .. N2
+N2 .. (Use)'/
+@enduml

@@ -1,0 +1,61 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+/'autonumber'/
+skinparam actorStyle awesome
+skinparam roundcorner 15
+
+skinparam sequence {
+ArrowColor DeepSkyBlue
+ActorBorderColor #333
+LifeLineBorderColor blue
+LifeLineBackgroundColor #A9DCDF
+
+ParticipantBorderColor #333
+ParticipantBackgroundColor white
+ParticipantFontName Aapex
+ParticipantFontSize 17
+ParticipantFontColor #333
+
+ActorBackgroundColor white
+ActorFontColor #333
+ActorFontSize 17
+ActorFontName Aapex
+
+GroupBorderColor #888
+GroupFontName Aapex
+GroupFontColor #333
+}
+
+actor       User        as User
+participant Mindmap     as Mindmap
+participant MindmapNode as Node
+
+
+
+/'boundary    boundary    as Foo2
+control     control     as Foo3
+entity      entity      as Foo4
+database    database    as Foo5
+collections collections as Foo6
+queue       queue       as Foo7'/
+
+User -> Node: Ny node klikket
+Mindmap <-- Node: Kaller lage ny node funksjon
+Mindmap -> Mindmap: Lager ny node og\noppdaterer data array
+Mindmap -> Node: Renderer ny node
+
+alt Node data altered
+
+    Node -> Node: Re-render
+
+else Node data unaltered
+
+    Node -> Node: Do nothing
+
+end
+
+Mindmap <-- Node: Callback
+User <-- Mindmap: Ny node dukker opp
+
+@enduml

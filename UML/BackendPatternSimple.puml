@@ -1,0 +1,41 @@
+@startuml
+
+    class Controller {
+        -service: Service
+        +getAll() : ResponseEntity<List<Mindmap>>
+
+    }
+
+    class Service {
+        -repository: Repository
+        __
+        getAllEntities() : List<Mindmap>
+    }
+
+
+    interface IRepository {
+        findAll()
+    }
+
+    class Repository {
+            findAll()
+        }
+
+
+    class Entity {
+        title: String
+        attr: Object
+    }
+
+
+
+Controller --> Service
+
+Service --> Entity
+
+Service -> IRepository
+IRepository <|- Repository
+
+Repository --> Entity
+
+@enduml

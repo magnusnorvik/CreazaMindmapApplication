@@ -43,7 +43,7 @@ package Models <<Folder>> {
         mainNode: TopicNode
     }
     class TopicNode
-    class UndoStack
+    class NodeEdge
 }
 
 
@@ -60,6 +60,7 @@ TopicNodeService ---> TopicNodeRepository
 MindmapService ---> MindmapRepository
 
 TopicNode <-- TopicNodeRepository
+TopicNode -left-> NodeEdge
 MindmapRepository --> Mindmap
 @enduml
 @enduml

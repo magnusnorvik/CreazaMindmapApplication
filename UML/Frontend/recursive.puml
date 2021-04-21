@@ -2,15 +2,27 @@
 'https://plantuml.com/class-diagram
 
 class Mindmap << (C,red) container>> {
-    ~store
     ==state==
+    nodes
     ==props==
 }
 
-class MindmapNode << (C,blue) container>> {
-    ~store
-    ==state==
-    ==props==
+class MindmapNode << (C,blue) component>> {
+     ==props==
+     nodeProperties
+     parent
+     edge
+
+     == Functions ==
+     createNewNode
+
+}
+
+class MindmapEdge << (C,blue) component>> {
+     ==props==
+     nodeProperties
+     parent
+     edge
 }
 
 @enduml

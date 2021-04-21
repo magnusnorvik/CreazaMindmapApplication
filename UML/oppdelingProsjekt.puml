@@ -10,9 +10,6 @@ rectangle rectangle [
 ]
 
 
-rectangle rectangle [
-"Mindmap Functionality"
-] 
 
 package Backend
 package Database
