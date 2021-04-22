@@ -18,14 +18,14 @@ public class MindmapStringController
     private MindmapStringService mindmapStringService;
 
     @GetMapping
-    @CrossOrigin("http://localhost:3000")
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
     public ResponseEntity<List<MindmapString>> getAllMindmaps() {
         List<MindmapString> mindmaps = mindmapStringService.getAll();
         return ResponseEntity.ok(mindmaps);
     }
 
     @GetMapping("/{id}")
-    @CrossOrigin("http://localhost:3000")
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
     public ResponseEntity<MindmapString> getMindmapById(@PathVariable Long id)
     {
         MindmapString mindmap = mindmapStringService.getById(id);
@@ -37,14 +37,14 @@ public class MindmapStringController
     }
 
     @PostMapping
-    @CrossOrigin("http://localhost:3000")
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
     public ResponseEntity<MindmapString> save(@RequestBody MindmapString mindmapStringData) {
         // TODO: Validate request body
         return new ResponseEntity<>(mindmapStringService.createNew(mindmapStringData), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    @CrossOrigin("http://localhost:3000")
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
     public ResponseEntity<MindmapString> updateById(@RequestBody MindmapString mindmapStringData, @PathVariable Long id) {
         // TODO: Validate request body
         MindmapString updatedMindmap = mindmapStringService.update(mindmapStringData, id);
@@ -56,7 +56,7 @@ public class MindmapStringController
     }
 
     @DeleteMapping("/{id}")
-    @CrossOrigin("http://localhost:3000")
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
     public void deleteMindmapById(@PathVariable Long id) {
         mindmapStringService.deleteById(id);
     }
