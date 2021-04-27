@@ -16,6 +16,7 @@ public class MindmapString
     private String filename;
 
     @NotNull
+    @Column(columnDefinition = "NVARCHAR(MAX)")
     private String mindmapJSONString;
 
     public MindmapString()
