@@ -9,7 +9,7 @@ skinparam roundcorner 15
 skinparam sequence {
 ArrowColor DeepSkyBlue
 ActorBorderColor #333
-LifeLineBorderColor blue
+LifeLineBorderColor gray
 LifeLineBackgroundColor #A9DCDF
 
 ParticipantBorderColor #333
