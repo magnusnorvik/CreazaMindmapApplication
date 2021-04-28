@@ -25,8 +25,8 @@ public class MindmapStringService
 
     public MindmapString createNew(MindmapString mindmapStringData)
     {
-        MindmapString mindmapString = new MindmapString(mindmapStringData.getMindmapJSONString());
-        return mindmapStringRepository.save(mindmapString);
+        //MindmapString mindmapString = new MindmapString(mindmapStringData.getFilename(), mindmapStringData.getMindmapJSONString());
+        return mindmapStringRepository.save(mindmapStringData);
     }
 
     public MindmapString update(MindmapString mindmapStringData, Long id)

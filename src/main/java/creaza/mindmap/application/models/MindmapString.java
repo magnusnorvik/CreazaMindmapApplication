@@ -23,7 +23,7 @@ public class MindmapString
     {
     }
 
-    public MindmapString(String mindmapJSONString)
+    public MindmapString(String filename, String mindmapJSONString)
     {
         this.mindmapJSONString = mindmapJSONString;
     }
