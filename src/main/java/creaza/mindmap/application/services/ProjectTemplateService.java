@@ -1,6 +1,5 @@
 package creaza.mindmap.application.services;
 
-import creaza.mindmap.application.models.Mindmap;
 import creaza.mindmap.application.models.ProjectTemplate;
 import org.springframework.stereotype.Service;
 

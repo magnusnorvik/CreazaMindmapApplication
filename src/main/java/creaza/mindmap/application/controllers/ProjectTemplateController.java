@@ -1,6 +1,5 @@
 package creaza.mindmap.application.controllers;
 
-import creaza.mindmap.application.models.Mindmap;
 import creaza.mindmap.application.models.ProjectTemplate;
 import creaza.mindmap.application.services.ProjectTemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
