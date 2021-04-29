@@ -1,23 +1,25 @@
 package creaza.mindmap.application.models;
 
 import com.sun.istack.NotNull;
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 
 @Entity
 public class MindmapString
 {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+
     private String filename;
+
 
     @NotNull
     @Column(columnDefinition = "NVARCHAR(MAX)")
     private String mindmapJSONString;
+
 
     public MindmapString()
     {
@@ -27,6 +29,7 @@ public class MindmapString
     {
         this.mindmapJSONString = mindmapJSONString;
     }
+
 
     public Long getId()
     {
@@ -52,6 +55,7 @@ public class MindmapString
     {
         this.mindmapJSONString = mindmapJSONString;
     }
+
 
     @Override
     public String toString()

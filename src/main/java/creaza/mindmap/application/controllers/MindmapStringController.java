@@ -14,15 +14,19 @@ import java.util.List;
 @RequestMapping("api/mindmapsJSON")
 public class MindmapStringController
 {
+
     @Autowired
     private MindmapStringService mindmapStringService;
 
+
     @GetMapping
     @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
-    public ResponseEntity<List<MindmapString>> getAllMindmaps() {
+    public ResponseEntity<List<MindmapString>> getAllMindmaps()
+    {
         List<MindmapString> mindmaps = mindmapStringService.getAll();
         return ResponseEntity.ok(mindmaps);
     }
+
 
     @GetMapping("/{id}")
     @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
@@ -36,16 +40,20 @@ public class MindmapStringController
         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
 
+
     @PostMapping
     @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
-    public ResponseEntity<MindmapString> save(@RequestBody MindmapString mindmapStringData) {
+    public ResponseEntity<MindmapString> save(@RequestBody MindmapString mindmapStringData)
+    {
         // TODO: Validate request body
         return new ResponseEntity<>(mindmapStringService.createNew(mindmapStringData), HttpStatus.CREATED);
     }
 
+
     @PutMapping("/{id}")
     @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
-    public ResponseEntity<MindmapString> updateById(@RequestBody MindmapString mindmapStringData, @PathVariable Long id) {
+    public ResponseEntity<MindmapString> updateById(@RequestBody MindmapString mindmapStringData, @PathVariable Long id)
+    {
         // TODO: Validate request body
         MindmapString updatedMindmap = mindmapStringService.update(mindmapStringData, id);
 
@@ -55,9 +63,11 @@ public class MindmapStringController
         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
 
+
     @DeleteMapping("/{id}")
     @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
-    public void deleteMindmapById(@PathVariable Long id) {
+    public void deleteMindmapById(@PathVariable Long id)
+    {
         mindmapStringService.deleteById(id);
     }
 }

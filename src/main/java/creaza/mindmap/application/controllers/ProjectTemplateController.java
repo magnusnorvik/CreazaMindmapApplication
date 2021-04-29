@@ -13,10 +13,12 @@ import java.util.List;
 
 @Controller
 @RequestMapping("api/projectTemplates")
-public class ProjectTemplateController {
+public class ProjectTemplateController
+{
 
     @Autowired
     private ProjectTemplateService projectTemplateService;
+
 
     @GetMapping
     @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
@@ -25,4 +27,5 @@ public class ProjectTemplateController {
         List<ProjectTemplate> templates = projectTemplateService.getAll();
         return ResponseEntity.ok(templates);
     }
+
 }

@@ -1,10 +1,5 @@
 package creaza.mindmap.application.models;
 
-import com.sun.istack.NotNull;
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.beans.factory.annotation.Value;
-
-import javax.persistence.*;
 
 public class ProjectTemplate
 {
@@ -14,6 +9,7 @@ public class ProjectTemplate
 
     private String templateJSONString;
 
+
     public ProjectTemplate(int id, String templateName, String templateJSONString)
     {
         this.id = id;
@@ -21,18 +17,22 @@ public class ProjectTemplate
         this.templateJSONString = templateJSONString;
     }
 
+
     public int getId()
     {
         return id;
     }
 
-    public String getTemplateName() {
+    public String getTemplateName()
+    {
         return templateName;
     }
 
-    public String getTemplateJSONString() {
+    public String getTemplateJSONString()
+    {
         return templateJSONString;
     }
+
 
     @Override
     public String toString() {
