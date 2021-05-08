@@ -1,0 +1,67 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+/'autonumber'/
+skinparam actorStyle awesome
+skinparam roundcorner 15
+
+skinparam sequence {
+ArrowColor DeepSkyBlue
+ArrowFontSize 12
+ActorBorderColor #333
+LifeLineBorderColor gray
+LifeLineBackgroundColor #A9DCDF
+
+ParticipantBorderColor #333
+ParticipantBackgroundColor white
+ParticipantFontName Aapex
+ParticipantFontSize 12
+ParticipantFontColor #333
+
+ActorBackgroundColor white
+ActorFontColor #333
+ActorFontSize 12
+ActorFontName Aapex
+
+GroupBorderColor #888
+GroupFontName Aapex
+GroupFontColor #333
+}
+
+actor       Bruker        as user
+participant Mindmap     as 1
+participant ProjectSelector as 2
+participant API as 3
+
+
+/'boundary    boundary    as Foo2
+control     control     as Foo3
+entity      entity      as Foo4
+database    database    as Foo5
+collections collections as Foo6
+queue       queue       as Foo7'/
+
+user -> 1: Starter opp
+1 -> 1: loadTemplatesAndProjects()
+1 -> 3: get() templates, prosjekter
+1 <-- 3: returnerer templates, prosjekter
+|||
+1 -> 2: Sender templates og prosjekter som props\nSender referanse til creatNewProject og loadProject()
+user <-- 2: Valgmeny blir presentert for bruker
+
+alt Velger nytt prosjekt fra template
+
+1 <-- 2: trigger createNewProject()\nSender med template id
+1 -> 1: createNewProject()
+
+else Fortsetter på påbegynt prosjekt
+
+1 <-- 2: trigger loadProject()\nSender med project id
+1 -> 1: loadProject()
+
+end
+1 -> 2: Stenger meny
+1 -> 1: rendererer tankekart
+user <-- 1: Tankekart blir presentert for bruker
+
+@enduml

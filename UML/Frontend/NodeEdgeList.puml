@@ -7,7 +7,7 @@ skinparam class {
 }
 
 skinparam roundcorner 15
-
+left to right direction
 class MindmapContainer << (C,#aa3333) container>> {
     ~store
     ==state==

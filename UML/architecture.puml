@@ -1,48 +1,38 @@
 @startuml
-@startuml
 
 package "Controllers (API)" <<Folder>> {
-    class MindmapController {
-
-    }
-    class TopicNodeController
+    class "MindmapStringController" as cntrl1
+    class "ProjectTemplateController" as cntrl2
 }
 
 package "Services (UseCases)"<<Folder>> {
-    class MindmapService {
-    }
-
-    class TopicNodeService
+    class "MindmapStringController"  as serv1
+    class "ProjectTemplateService" as serv2
 }
 
 package Repositories <<Folder>> {
-    interface MindmapRepository
-    interface TopicNodeRepository
+    interface "MindmapStringRepository" as repo1
+    interface "ProjectTemplateRepository" as repo2
 }
 
 package Models <<Folder>> {
-    class Mindmap {
-        title: String
-        mainNode: TopicNode
-    }
-    class TopicNode
-    class UndoStack
+    class "MindmapString" as ent1
+    class "ProjectTemplate" as ent2
 }
 
 
 
-MindmapController --> MindmapService
-TopicNodeController --> TopicNodeService
+cntrl1 --> serv1
+cntrl2 --> serv2
 
-TopicNodeService --> TopicNode
-MindmapService --> Mindmap
+serv1 -down-> ent1
+serv2 -up-> ent2
 
-Mindmap --> TopicNode
 
-TopicNodeService ---> TopicNodeRepository
-MindmapService ---> MindmapRepository
+serv1 -> repo1
+serv2 -> repo2
 
-TopicNode <-- TopicNodeRepository
-MindmapRepository --> Mindmap
-@enduml
+repo1 --> ent1
+repo2 --> ent2
+
 @enduml

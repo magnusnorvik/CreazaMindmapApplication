@@ -1,28 +1,20 @@
 @startuml
 'https://plantuml.com/use-case-diagram
-
+left to right direction
 skinparam actorStyle awesome
+
 skinparam sequence {
-ArrowColor DeepSkyBlue
-ActorBorderColor #333
-LifeLineBorderColor blue
-LifeLineBackgroundColor #A9DCDF
-
-ParticipantBorderColor #333
-ParticipantBackgroundColor white
-ParticipantFontName Aapex
-ParticipantFontSize 17
-ParticipantFontColor #333
-
-ActorBackgroundColor white
-ActorFontColor #333
-ActorFontSize 17
-ActorFontName Aapex
-
-GroupBorderColor deepskyblue
-GroupFontName Aapex
-GroupFontColor #333
+    ActorBorderColor #333
+    ActorBackgroundColor white
 }
+
+skinparam usecase {
+    ArrowColor #BB0033
+    BorderColor #333
+    BackgroundColor white
+}
+
+skinparam roundcorner 15
 
 rectangle "React" {
   usecase "Lage nytt\ntankekart" as New
@@ -30,6 +22,9 @@ rectangle "React" {
   usecase "Slette\nnode" as Del
   usecase "Redigere tekst" as Edit
   usecase "Legge til bilde" as Pic
+  usecase "Velge layout\ntemplate" as Layout
+  usecase "når et nytt prosjekt blir laget" as s
+  usecase "for en enkelt node og sine subnoder" as t
 }
 
 rectangle "D3" {
@@ -41,14 +36,20 @@ rectangle "D3" {
 
 
 User --> (New)
+User --> (Del)
+User --> (Add)
+
+(Add) --> (Edit)
+(Add) ..> (Pic)
+User --> (Layout)
+
+(Layout) --> (s)
+(Layout) --> (t)
+
+
 User --> (Pan)
 User --> (Zoom)
 User --> (Drag)
-User --> (Add)
-User --> (Del)
-(Add) --> (Edit)
-(Add) ..> (Pic)
-
 
 /'note righ of Admin : This is an example.
 

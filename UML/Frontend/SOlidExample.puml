@@ -1,0 +1,31 @@
+@startuml
+skinparam class {
+    BackgroundColor white
+    ArrowColor DeepSkyBlue
+    BorderColor #333333
+}
+
+skinparam roundcorner 15
+
+class "     MindmapNode     " as comp1 <<(C, DeepSkyBlue) component>> {
+    ==props==
+}
+
+class "    TextContent    " as comp2 <<(C, DeepSkyBlue) component>> {
+    ==props==
+}
+
+class "   ImageContent   " as comp3 <<(C, DeepSkyBlue) component>> {
+    ==props==
+}
+
+class "   VideoContent   " as comp4 <<(C, DeepSkyBlue) component>> {
+    ==props==
+}
+
+comp1 --> comp2
+comp1 --> comp3
+comp1 --> comp4
+
+
+@enduml

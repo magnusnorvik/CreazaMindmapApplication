@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/deployment-diagram
+
+rectangle "System til Oppdragsgiver" {
+
+    rectangle "Existing Modules" as 1
+    rectangle Api
+    rectangle Backend
+    database "Database" as data
+}
+
+
+
+rectangle "System til Prosjektgruppen" {
+
+    rectangle "React SPA" as 2
+    rectangle "Crud Api" as 3
+}
+
+
+1 -down-> Api
+Api -down-> Backend
+Backend -left-> data
+
+1 ..right..> 2
+
+2 -down-> 3
+
+@enduml

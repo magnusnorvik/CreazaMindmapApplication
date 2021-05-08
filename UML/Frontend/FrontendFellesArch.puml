@@ -1,0 +1,48 @@
+@startuml
+left to right direction
+skinparam class {
+    BackgroundColor white
+    ArrowColor #555
+    BorderColor #333333
+}
+
+skinparam roundcorner 15
+
+/'class tttt << (C,#aa3333) container>> {
+    ~store
+    ==state==
+    # mindmapNodesData
+    # mindmapEdgesData
+}'/
+
+/'class MindmapContainer << (C,#aa3333) container>> {
+    ==state==
+    '//'# mindmapNodesData
+    # mindmapEdgesData'//'
+    ==methods==
+    # getMindmapData()
+}'/
+
+class Mindmap <<(C, 88bbdd) component>> {
+    ==state==
+    # projectTemplates
+    # existingProjects
+        /'# mindmapNodesData
+        # mindmapEdgesData'/
+    ==methods==
+     loadTemplatesAndProjects()
+     createNewProject()
+     loadProject()
+}
+
+class axios_mindmaps <<(C, #aaccaa) component>> {
+    baseURL
+}
+
+/'
+axios_mindmaps <.. MindmapContainer
+MindmapContainer --> Mindmap'/
+
+axios_mindmaps <..  Mindmap
+
+@enduml

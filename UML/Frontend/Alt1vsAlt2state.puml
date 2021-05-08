@@ -1,0 +1,47 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam class {
+    BackgroundColor white
+    ArrowColor #555
+    BorderColor #333333
+}
+
+skinparam roundcorner 15
+
+class "   Mindmap (Alt 1)    " <<(C, 88bbdd) component>> {
+    ==state==
+    # projectTemplates
+    # existingProjects
+    # nodesData
+    # edgesData
+    ==methods==
+     loadTemplatesAndProjects()
+     createNewProject()
+     loadProject()
+
+}
+
+class "   Mindmap (Alt 2)   " <<(C, 88bbdd) component>> {
+    ==state==
+    # projectTemplates
+    # existingProjects
+    # mindmapData
+    ==methods==
+     loadTemplatesAndProjects()
+     createNewProject()
+     loadProject()
+
+}
+
+class "   MindmapNode   " <<(C, 88bbdd) component>> {
+    ==props==
+    # node
+    # plusButtonClicked
+    # handleSelected
+    # onDragStart
+    # onDrag
+    # onDragStop
+
+}
+@enduml

@@ -1,0 +1,50 @@
+@startuml
+left to right direction
+skinparam class {
+    BackgroundColor white
+    ArrowColor #555
+    BorderColor #333333
+}
+
+skinparam roundcorner 15
+
+class "   Mindmap   " as mindmap <<(C, 88bbdd) component>> {
+    ==state==
+    # projectTemplates
+    # existingProjects
+    # nodesData
+    # edgesData
+    ==methods==
+     loadTemplatesAndProjects()
+     createNewProject()
+     loadProject()
+
+}
+
+class "   MindmapNode   " as mmNode <<(C, 88bbdd) component>> {
+    ==props==
+    # node
+    # plusButtonClicked
+    # handleSelected
+    # onDragStart
+    # onDrag
+    # onDragStop
+
+}
+
+class "   MindmapEdge   " as mmEdge<<(C, 88bbdd) component>> {
+    ==props==
+    # node
+
+}
+
+class "   NodeText   " as mmText<<(C, 88bbdd) component>> {
+    ==props==
+    # node
+
+}
+mindmap o-- mmNode
+mmNode --> mmText
+
+mindmap o--- mmEdge
+@enduml

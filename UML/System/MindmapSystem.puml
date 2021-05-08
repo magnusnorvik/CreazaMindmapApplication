@@ -1,0 +1,48 @@
+@startuml
+left to right direction
+rectangle "Mindmap App" {
+    rectangle "ReactJS SPA              " as app
+}
+
+rectangle "API" {
+    rectangle "Controllers                      " as cntrl1
+}
+
+
+rectangle DataAccess  {
+    rectangle "Repositories                                 " as repo1
+}
+
+rectangle "Core            " {
+    rectangle "Application" {
+        rectangle "Services                 "  as serv1
+    }
+
+
+    rectangle Models {
+        rectangle "  Entity                    " as ent1
+    }
+
+    rectangle "Repository Interfaces"  as IRepo{
+    }
+}
+
+database "              Data              " as data {
+}
+
+app -left-> cntrl1
+
+cntrl1 --> serv1
+
+serv1 -down-> ent1
+
+
+serv1 -left-> IRepo
+
+repo1 -left-|> IRepo
+
+repo1 --> ent1
+
+repo1 --> data
+
+@enduml
