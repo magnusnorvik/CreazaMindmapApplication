@@ -18,6 +18,11 @@ class "   Mindmap   " as mindmap <<(C, 88bbdd) component>> {
      loadTemplatesAndProjects()
      createNewProject()
      loadProject()
+     createNewNode()
+     handleSelected()
+     handleDragStart()
+     handleDrag()
+     handleDragStop()
 
 }
 
@@ -29,7 +34,6 @@ class "   MindmapNode   " as mmNode <<(C, 88bbdd) component>> {
     # onDragStart
     # onDrag
     # onDragStop
-
 }
 
 class "   MindmapEdge   " as mmEdge<<(C, 88bbdd) component>> {

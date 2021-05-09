@@ -6,6 +6,7 @@ skinparam actorStyle awesome
 skinparam roundcorner 15
 
 skinparam sequence {
+
     ArrowColor DeepSkyBlue
     ActorBorderColor #333
     LifeLineBorderColor gray
@@ -25,23 +26,26 @@ skinparam sequence {
     GroupBorderColor #888
     GroupFontName Aapex
     GroupFontColor #333
+
 }
+
 
 actor       Bruker        as User
 participant Mindmap     as Mindmap
 participant MindmapNode as Node
-participant NodeText as Text
 participant MindmapEdge as Edge
 
 
-User -> Node: Interagerer med node
-Mindmap <-- Node: Kaller trigget metode
-Mindmap -> Mindmap: Oppdaterer data arrays om nødvendig
-Mindmap -> Node: Sender ned oppdaterte properties
-Mindmap -> Edge: Sender ned oppdaterte properties
+User -> Node: Trykker på legg-til-knapp på node
+Node -> Node: Kaller ny node funskjoner:\nplusButtonClicked()\ncreateNode()
+Node -> Edge:
+Node <-- Node: Rapporterer opp til forelder\nsom rapporetere til sin forelder\nhelt til hovednoden foår beskjed
+Mindmap <-- Node: Hovednode rapporterer\n til Mindmap
+
+
 alt Hvis data er oppdatert
 
-    Node -> Text: Sender ned\noppdaterte properties
+    Node -> Edge: Sender ned\noppdaterte properties
     Node -> Node: Re-render
 
 else Hvis ikke oppdatert
@@ -49,6 +53,7 @@ else Hvis ikke oppdatert
     Node -> Node: Inget skjer
 
 end
+
 
 Mindmap <-- Node: Returnerer (Callback))
 

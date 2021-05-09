@@ -1,5 +1,17 @@
 @startuml
 left to right direction
+
+skinparam database {
+    BorderColor #333
+}
+
+skinparam rectangle {
+    BorderColor #333
+}
+
+skinparam ArrowColor #C22
+skinparam roundcorner 15
+
 rectangle "Mindmap App" {
     rectangle "ReactJS SPA              " as app
 }

@@ -1,6 +1,20 @@
 @startuml
 'https://plantuml.com/deployment-diagram
 
+
+
+skinparam database {
+    BorderColor #333
+}
+
+skinparam rectangle {
+    BorderColor #333
+}
+
+skinparam ArrowColor #C22
+skinparam roundcorner 15
+
+
 rectangle "System til Oppdragsgiver" {
 
     rectangle "Existing Modules" as 1

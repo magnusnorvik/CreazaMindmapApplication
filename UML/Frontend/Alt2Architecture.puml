@@ -12,29 +12,28 @@ class "   Mindmap   " as mindmap <<(C, 88bbdd) component>> {
     ==state==
     # projectTemplates
     # existingProjects
-    # nodesData
-    # edgesData
+    # mindmapData
     ==methods==
-     loadTemplatesAndProjects()
-     createNewProject()
-     loadProject()
+    loadTemplatesAndProjects()
+    createNewProject()
+    loadProject()
+    handleSelected()
+    updateMainNode()
 
 }
 
 class "   MindmapNode   " as mmNode <<(C, 88bbdd) component>> {
     ==props==
     # node
-    # plusButtonClicked
+    # parent
+    # reportToParent
     # handleSelected
-    # onDragStart
-    # onDrag
-    # onDragStop
-
-}
-
-class "   MindmapEdge   " as mmEdge<<(C, 88bbdd) component>> {
-    ==props==
-    # node
+    # index
+    # selectedNodeId
+    ==Methods==
+    createNewNode()
+    handlePlusButtonClick()
+    updateChild()
 
 }
 
@@ -43,8 +42,29 @@ class "   NodeText   " as mmText<<(C, 88bbdd) component>> {
     # node
 
 }
-mindmap o-- mmNode
-mmNode --> mmText
 
-mindmap o--- mmEdge
+class "   MindmapEdge   " as mmEdge<<(C, 88bbdd) component>> {
+    ==props==
+    # x1
+    # y1
+    # x2
+    # y2
+
+}
+
+class "   ZoomPanWrapper   " as zoompan <<(C, 88bbdd) component>> {
+    D3 logic
+}
+
+class "   DragWrapper   " as drag <<(C, 88bbdd) component>> {
+    D3 logic
+}
+
+
+mindmap --> mmNode
+mindmap -> zoompan
+mmNode o-- mmNode
+mmNode --> mmText
+mmNode --> mmEdge
+mmNode -> drag
 @enduml
