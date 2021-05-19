@@ -1,0 +1,50 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam class {
+    BackgroundColor #FFF
+    ArrowColor #555
+    BorderColor #333
+}
+
+skinparam package {
+    BackgroundColor #EFEFDD
+}
+
+package "API" {
+    class "MindmapController" as ctrl1
+    class "TemplateController" as ctrl2
+}
+
+package "Application Layer" {
+    class "MindmapService" as serv1
+    class "TemplateService" as serv2
+
+    interface "IMindmapRepository" as iRepo1
+    interface "ITemplateRepository" as iRepo2
+}
+
+package Model {
+    class "Mindmap" as ent1
+    class "Template" as ent2
+}
+
+package "Data Layer" {
+
+    class "MindmapRepository" as repo1
+    class "TemplateRepository" as repo2
+}
+
+ctrl1 -d-> serv1
+serv1 ---> ent1
+serv1 -d-> iRepo1
+repo1 -u-|> iRepo1
+repo1 -u--> ent1
+
+ctrl2 -d-> serv2
+serv2 -> ent2
+serv2 -d-> iRepo2
+repo2 -u-|> iRepo2
+repo2 -u--> ent2
+
+@enduml

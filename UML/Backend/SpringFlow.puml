@@ -1,0 +1,46 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+/'autonumber'/
+skinparam actorStyle awesome
+skinparam roundcorner 15
+
+skinparam sequence {
+    ArrowColor #aa4433
+    ActorBorderColor #333
+    LifeLineBorderColor gray
+    LifeLineBackgroundColor #A9DCDF
+
+    ParticipantBorderColor #333
+    ParticipantBackgroundColor white
+    ParticipantFontName Aapex
+    ParticipantFontSize 13
+    ParticipantFontColor #333
+
+    ActorBackgroundColor white
+    ActorFontColor #333
+    ActorFontSize 13
+    ActorFontName Aapex
+
+    GroupBorderColor #888
+    GroupFontName Aapex
+    GroupFontColor #333
+}
+
+participant APP
+participant Controller     as a
+participant Service as b
+participant Repository as c
+participant Database as d
+
+APP -> a: inkommende request()
+a -> b: kaller UseCase metode
+b -> c: kaller CRUD metode
+c -> d: henter/skriver data
+c <-- d: returner
+b <-- c: returner
+a <-- b: returner
+APP <-- a: reponse()
+
+
+@enduml

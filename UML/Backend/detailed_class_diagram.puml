@@ -1,0 +1,96 @@
+@startuml
+@startuml
+
+skinparam class {
+    BackgroundColor #FFF
+    ArrowColor #555
+    BorderColor #333
+}
+
+skinparam package {
+    BackgroundColor #EFEFEE
+}
+
+package "Controllers (API)"  <<Folder>> {
+    class "MindmapStringController" as ctrl1 {
+        -mindmapService: MindmapService
+        __
+        + "getAllMindmaps() : \n\t\tResponseEntity<List<MindmapString>>"
+        ..
+        + "getMindmapById(id: Long) : \n\t\tResponseEntity<MindmapString>"
+        ..
+        + "create(mindmapStringData: \n\t\tMindmapString) : ResponseEntity<MindmapString>"
+        ..
+        + "updateById(mindmapStringData: MindmapString, id: Long) : \n\t\tResponseEntity<MindmapString>"
+        ..
+        + "deleteMindmapById(id: Long) : \n\t\ttvoid"
+    }
+    class "ProjectTemplateController" as ctrl2 {
+        - "projectTemplateService : \n\t\tProjectTemplateService"
+        __
+        + "getAllTemplates() : \n\t\tResponseEntity()<List<ProjectTemplate>>"
+    }
+}
+
+package "Services (UseCases)"<<Folder>> {
+    class "MindmapStringService" as serv1 {
+        -mindmapRepository: MindmapRepository
+        __
+        + "getAll() : \n\t\tList<MindmapString>"
+        ..
+        + "getById(id: Long) : \n\t\tMindmapString"
+        ..
+        + "createNew(mindmapStringData: MindmapString) : \n\t\tMindmapString"
+        ..
+        + "update(mindmapStringData: MindmapString, id: Long) : \n\t\tMindmapString"
+        ..
+        + "deleteById(id: int) : \n\t\tvoid"
+    }
+
+    class "ProjectTemplateService" as serv2 {
+            - "mindmapRepository: \n\t\tMindmapRepository"
+            __
+            + "getAll() : \n\t\tList<MindmapString>"
+            ..
+            - "generateBlankTemplate() : \n\t\tProjectTemplate"
+            ..
+            - "generate4SubNodeTemplate() : \n\t\tProjectTemplate"
+    }
+}
+
+package Repositories <<Folder>> {
+    interface "MindmapStringRepository" as repo1
+}
+
+package Models <<Folder>> {
+    class "ProjectTemplate" as ent2 {
+         - id : Long
+         - String templateName : String
+         - String templateJSONString : String
+    }
+    class "MindmapString" as ent1 {
+        - id : Long
+        - String filename : String
+        - String mindmapJSONString : String
+    }
+
+}
+
+database "\n      Database      \n" as data {
+}
+
+
+
+ctrl1 --> serv1
+ctrl2 --> serv2
+
+serv1 --> ent1
+serv2 --> ent2
+
+serv1 ---> repo1
+
+repo1 -l-> ent1
+
+repo1 -l-> data
+
+@enduml

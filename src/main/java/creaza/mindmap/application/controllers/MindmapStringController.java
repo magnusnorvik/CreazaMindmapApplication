@@ -43,7 +43,7 @@ public class MindmapStringController
 
     @PostMapping
     @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
-    public ResponseEntity<MindmapString> save(@RequestBody MindmapString mindmapStringData)
+    public ResponseEntity<MindmapString> create(@RequestBody MindmapString mindmapStringData)
     {
         // TODO: Validate request body
         return new ResponseEntity<>(mindmapStringService.createNew(mindmapStringData), HttpStatus.CREATED);
